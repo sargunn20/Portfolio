@@ -1,0 +1,16 @@
+[
+  {
+    "title": "AAHAR app",
+    "imageSrc": "project.png",
+    "description": "A smart farming solution leveraging IoT-based NPK prediction and AI-driven analytics to optimize fertilizer use, maximize crop yield and promote sustainable agriculture.",
+    "skills": ["Machine Learning", "Flask", "MongoDB", "Firebase"],
+    "source": "https://github.com/sargunn20/AAHAR_hackTU1"
+  },
+  {
+    "title": "MediScan",
+    "imageSrc": "project copy.png",
+    "description": "A health-tech tool where users input medications they're taking. It checks for harmful interactions using APIs like OpenFDA or DrugBank. Sends daily reminders..",
+    "skills": ["Machine Learning", "Flask", "MongoDB", "REST APIs"],
+    "source": "https://github.com/sargunn20/MediScan"
+  }
+]

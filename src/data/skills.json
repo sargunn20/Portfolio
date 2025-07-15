@@ -1,0 +1,56 @@
+[
+  {
+    "title": "HTML",
+    "imageSrc": "html.png",
+    "description": "HTML is the standard markup language for creating and structuring web pages and web applications.",
+    "wikiUrl": "https://en.wikipedia.org/wiki/HTML"
+  },
+  {
+    "title": "CSS",
+    "imageSrc": "css.png",
+    "description": "CSS is used to style and layout web pages, enabling responsive and visually engaging user interfaces.",
+    "wikiUrl": "https://en.wikipedia.org/wiki/CSS"
+  },
+  {
+    "title": "React",
+    "imageSrc": "react.png",
+    "description": "React is a popular JavaScript library for building fast, interactive, and reusable user interfaces.",
+    "wikiUrl": "https://en.wikipedia.org/wiki/React_(software)"
+  },
+  {
+    "title": "Node.js",
+    "imageSrc": "node.png",
+    "description": "Node.js is a JavaScript runtime that lets you build scalable server-side and networking applications.",
+    "wikiUrl": "https://en.wikipedia.org/wiki/Node.js"
+  },
+  {
+    "title": "Flask",
+    "imageSrc": "flask.png",
+    "description": "Flask is a lightweight Python web framework for developing secure and maintainable web apps and APIs.",
+    "wikiUrl": "https://en.wikipedia.org/wiki/Flask_(web_framework)"
+  },
+  {
+    "title": "MongoDB",
+    "imageSrc": "mongodb.png",
+    "description": "MongoDB is a flexible, document-oriented NoSQL database ideal for storing unstructured data at scale.",
+    "wikiUrl": "https://en.wikipedia.org/wiki/MongoDB"
+  },
+  {
+    "title": "Python",
+    "imageSrc": "python.png",
+    "description": "Python is a versatile programming language widely used for web development, data science, AI, and automation.",
+    "wikiUrl": "https://en.wikipedia.org/wiki/Python_(programming_language)"
+  },
+  {
+    "title": "Google Earth Engine",
+    "imageSrc": "gee.png",
+    "description": "Google Earth Engine is a cloud-based platform for large-scale planetary geospatial data analysis.",
+    "wikiUrl": "https://en.wikipedia.org/wiki/Google_Earth_Engine"
+  },
+  {
+    "title": "Figma",
+    "imageSrc": "figma.png",
+    "description": "Figma is a collaborative design tool for creating modern UI designs, prototypes, and design systems.",
+    "wikiUrl": "https://en.wikipedia.org/wiki/Figma_(software)"
+  }
+]

@@ -1,0 +1,33 @@
+[
+  {
+    "role": "Undergraduate Intern",
+    "organisation": "IIT Ropar, Punjab, India",
+    "startDate": "May, 2025",
+    "endDate": "Present",
+    "experiences": [
+      "Designed and implemented a mobile-based analytics dashboard for farmers and scientists, enabling real-time visualization, data querying, and statistical analysis."
+    ],
+    "imageSrc": "iitropar.png"
+  },
+  {
+    "role": "Web Development Intern",
+    "organisation": "Deftsoft",
+    "startDate": "June, 2025",
+    "endDate": "July, 2025",
+    "experiences": [
+      "Developed interactive and responsive e-commerce web interfaces using the MERN stack.",
+      "Deployed AI-powered personalized content recommendations to enhance user experience and retention."
+    ],
+    "imageSrc": "deftsoft.png"
+  },
+  {
+    "role": "Research Intern",
+    "organisation": "Thapar Institute of Engineering & Technology",
+    "startDate": "June, 2024",
+    "endDate": "Present",
+    "experiences": [
+      "Engineered an ETL data pipeline to process two years of LoRa WAN sensor data, reducing preprocessing time by 40% and enabling scalable AI-driven soil modeling with MongoDB."
+    ],
+    "imageSrc": "tiet.png"
+  }
+]
