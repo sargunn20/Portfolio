@@ -8,7 +8,7 @@ export const Hero = () => {
       <div className={styles.content}>
         <h1 className={styles.title}>Hi, I'm Sargun</h1>
         <p className={styles.description}>
-        I’m an Electronics & Communication Engineering student specializing in IoT networks, wireless communication systems, and AI-based data pipelines. I design end-to-end solutions that integrate sensors, cloud, and intelligent analytics. Let’s connect if you’re interested in impactful tech!
+        I’m an Electronics & Communication Engineering student specializing in IoT networks, wireless communication systems, and AI-based data pipelines. I design end-to-end solutions that integrate sensors, cloud, and intelligent analytics. Let’s connect!
         </p>
         <a href="mailto:sargun1273@gmail.com" className={styles.contactBtn}>
           Contact Me
