@@ -2,9 +2,10 @@
 
 .container {
   color: var(--color-text);
-  margin-top: 79px;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-top: 120px;
+  margin-bottom: 120px;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
 .title {
@@ -13,7 +14,8 @@
   font-weight: 700;
   letter-spacing: 1.75px;
   text-transform: uppercase;
-  margin-bottom: 85px;
+  text-align: center;
+  margin-bottom: 50px;
 }
 
 .content {
@@ -28,6 +30,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 37px;
+  justify-content: center;
 }
 
 .skill {
@@ -35,6 +38,16 @@
   flex-direction: column;
   align-items: center;
   gap: 11px;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.skills.dimmed .skill {
+  opacity: 0.3;
+}
+
+.skills.dimmed .skill.highlighted {
+  opacity: 1;
 }
 
 .skillImageContainer {
@@ -45,6 +58,32 @@
   justify-content: center;
   width: 120px;
   height: 120px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  /* CHANGE: Using the new drift animation */
+  animation-name: drift;
+  animation-duration: 6s; /* A longer duration for a smoother feel */
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+/* Staggered delays for a more dynamic effect */
+.skill:nth-child(2n) .skillImageContainer {
+  animation-delay: -3s; /* Negative delay starts the animation partway through */
+}
+.skill:nth-child(3n) .skillImageContainer {
+  animation-delay: -1.5s;
+}
+.skill:nth-child(4n) .skillImageContainer {
+   animation-delay: -5s;
+}
+
+
+/* When hovering OR the skill is highlighted, pause the animation and scale up */
+.skillImageContainer:hover,
+.skill.highlighted .skillImageContainer {
+  animation-play-state: paused;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px var(--color-primary);
 }
 
 .skillImageContainer img {
@@ -57,7 +96,18 @@
   font-weight: 500;
 }
 
+/* NEW: Keyframes for a fluid, multi-directional drift animation */
+@keyframes drift {
+	0% { transform: translateY(0px) translateX(0px); }
+	25% { transform: translateY(-15px) translateX(10px); }
+	50% { transform: translateY(10px) translateX(-15px); }
+  75% { transform: translateY(-5px) translateX(15px); }
+	100% { transform: translateY(0px) translateX(0px); }
+}
+
 .history {
+  list-style: none;
+  padding: 0;
   width: 45%;
   display: flex;
   flex-direction: column;
@@ -67,20 +117,28 @@
 .historyItem {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   gap: 17px;
-  background: #19376d;
-  background: linear-gradient(90deg, #19376d 0%, rgba(25, 55, 109, 0) 100%);
+  background: var(--color-secondary); 
   border-radius: 10px;
   padding: 24px;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  cursor: pointer;
+}
+
+.historyItem:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
 }
 
 .historyItem img {
   width: 50px;
+  margin-top: 5px;
 }
 
 .historyItemDetails {
   font-family: var(--font-roboto);
+  width: 100%;
 }
 
 .historyItemDetails h3 {
@@ -91,10 +149,11 @@
 .historyItemDetails p {
   font-size: 15px;
   font-weight: 300;
+  opacity: 0.8;
 }
 
 .historyItemDetails ul {
-  margin-top: 6px;
+  margin-top: 15px;
   list-style-position: inside;
   font-size: 20px;
   list-style-type: disc;
@@ -118,81 +177,4 @@
     width: 100%;
     gap: 9px;
   }
-}
-
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
-}
-
-@keyframes sway {
-  0% { transform: translateX(0); }
-  50% { transform: translateX(10px); }
-  100% { transform: translateX(0); }
-}
-.skill {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 11px;
-
-  animation: float 4s ease-in-out infinite alternate,
-             sway 6s ease-in-out infinite alternate;
-}
-.skill:nth-child(2n) {
-  animation-delay: 1s, 2s;
-}
-
-.skill:nth-child(3n) {
-  animation-delay: 2s, 4s;
-}
-
-.skill:nth-child(4n) {
-  animation-delay: 3s, 1s;
-}
-.popupOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.popup {
-  background: white;
-  color: #000;
-  padding: 30px;
-  border-radius: 10px;
-  max-width: 400px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
-  text-align: center;
-}
-
-.popup h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.popup p {
-  font-size: 18px;
-}
-
-.closeButton {
-  margin-top: 20px;
-  background: #19376d;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.closeButton:hover {
-  background: #3054a5;
 }

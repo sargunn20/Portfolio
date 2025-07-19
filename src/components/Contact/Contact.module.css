@@ -2,64 +2,78 @@
 
 .container {
   color: var(--color-text);
-  margin-top: 120px;
-  background-color: var(--color-secondary);
+  margin-top: 80px;
+  background-color: #2a0c12 ;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100vw;
-  padding: 30px 10%;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px 10%; 
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 10px;
 }
 
-.text h2 {
-  font-size: 60px;
-  font-weight: 700;
-  letter-spacing: 4px;
-
-}
-
 .text p {
-  font-size: 30px;
-  font-weight: 400;
-  letter-spacing: 2px;
-}
-
-.links {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  list-style: none;
-  gap: 26px;
-}
-
-.link {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
-.link a {
-  color: var(--color-text);
-  text-decoration: none;
-  font-size: 30px;
+  font-size: 22px; 
+  font-family: var(--font-roboto);
   font-weight: 400;
   letter-spacing: 1.5px;
 }
 
+.emailContainer {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* CHANGE: Updated styles for a more interactive effect */
+.emailLink {
+  position: relative; /* Required for the animated underline */
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 22px; 
+  cursor: pointer;
+  text-decoration: none; /* Removed the default underline */
+  padding-bottom: 3px; /* Added space for the new underline */
+  transition: transform 0.2s ease-out;
+}
+
+/* NEW: Add a "lift" effect on hover */
+.emailLink:hover {
+  transform: translateY(-2px);
+}
+
+/* NEW: The animated underline, hidden by default */
+.emailLink::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease-out;
+}
+
+/* NEW: The underline animates to full width on hover */
+.emailLink:hover::after {
+  width: 100%;
+}
+
+
+.copiedMessage {
+  color: #2bda3f;
+  font-weight: 600;
+  font-size: 16px;
+}
+
 @media screen and (max-width: 830px) {
-  .container {
-    flex-direction: column;
-    gap: 23px;
-  }
-
   .text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .links {
-    align-items: center;
+    text-align: center;
   }
 }

@@ -1,8 +1,29 @@
-@import "./vars.css";
-
 .App {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
   background-color: var(--color-bg);
+  overflow-x: hidden; /* only hide horizontal overflow if needed */
+}
+
+.particles {
+  position: fixed; /* covers the whole viewport */
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  z-index: 0; /* background layer */
+}
+
+/* make sure your other content stacks above */
+.Navbar,
+.Hero,
+.About,
+.Experience,
+.Projects,
+.LatestAccomplishments,
+.AcademicUpdates,
+.Contact {
+  position: relative;
+  z-index: 1;
 }

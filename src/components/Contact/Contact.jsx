@@ -1,28 +1,41 @@
-import React from "react";
-
+import React, { useState } from "react";
 import styles from "./Contact.module.css";
 
 export const Contact = () => {
+  const [copied, setCopied] = useState(false);
+  const email = "sargun1273@gmail.com";
+
+  const handleCopy = () => {
+    // Modern way to copy, works on secure (https) servers
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(email);
+    } else {
+      // Fallback for older browsers or insecure (http) servers
+      const textArea = document.createElement("textarea");
+      textArea.value = email;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+    }
+
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000); 
+  };
+
   return (
     <footer id="contact" className={styles.container}>
       <div className={styles.text}>
-        <h2>Contact me!</h2>
-        <p>Feel free to reach out</p>
+        <p>For any feedback or queries, kindly reach me at my email:</p>
+        <div className={styles.emailContainer}>
+          <span className={styles.emailLink} onClick={handleCopy}>
+            {email}
+          </span>
+          {copied && <span className={styles.copiedMessage}>Copied!</span>}
+        </div>
       </div>
-      <ul className={styles.links}>
-        <li className={styles.link}>
-          <img src="/assets/contact/emailIcon.png" alt="Email icon" />
-          <a href="mailto:sargun1273@gmail.com">MY EMAIL</a>
-        </li>
-        <li className={styles.link}>
-          <img src="/assets/contact/linkedinIcon.png" alt="LinkedIn icon" />
-          <a href="https://www.linkedin.com/in/sargun-3b13b6298/">LINKEDIN</a>
-        </li>
-        <li className={styles.link}>
-          <img src="/assets/contact/githubIcon.png" alt="Github icon" />
-          <a href="https://github.com/sargunn20">GITHUB</a>
-        </li>
-      </ul>
     </footer>
   );
 };

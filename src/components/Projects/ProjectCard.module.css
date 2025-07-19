@@ -1,17 +1,52 @@
 @import "../../vars.css";
 
 .container {
+  position: relative;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  background: linear-gradient(180deg, #576cbc 0%, #132a53 100%);
-  box-shadow: 0 16px 14px 0 #04152d;
-  padding: 18px 24px;
-  max-width: 345px;
+  box-shadow: 0 16px 14px 0 #2a0c12 ;
+  
+  /* CHANGE: Reduced max-width and removed aspect-ratio */
+  width: 100%;
+  max-width: 380px;
+
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .image {
-  margin-bottom: 26px;
+  width: 100%;
+  /* The image height will now define the card's height */
+  height: auto; 
+  object-fit: cover;
+  transition: transform 0.4s ease-out, filter 0.4s ease-out;
+}
+
+.container:hover .image {
+  transform: scale(1.1);
+  filter: brightness(0.4);
+}
+
+.content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 18px 24px;
+  background: linear-gradient(180deg, #2a0c12  0%, #2a0c12  100%);
+  color: var(--color-text);
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.container:hover .content {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .title {
@@ -21,7 +56,7 @@
 
 .description {
   margin-top: 6px;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 400;
 }
 
@@ -36,26 +71,26 @@
 }
 
 .skill {
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 400;
   border-radius: 100px;
   background: var(--color-dark);
-  padding: 2px 22px;
+  padding: 2px 12px;
 }
 
 .links {
   width: 100%;
   margin-top: 26px;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
 .link {
   text-decoration: none;
   color: var(--color-text);
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 600;
   border-radius: 100px;
   background: var(--color-primary);
-  padding: 1px 22px;
+  padding: 2px 22px;
 }

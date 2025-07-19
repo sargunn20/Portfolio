@@ -1,26 +1,64 @@
+@import "../../vars.css";
+
+/* CHANGE: Using the integrated, borderless style */
 .container {
-    color: var(--color-text);
-    margin-top: 79px;
-    margin-left: 10%;
-    margin-right: 10%;
+  color: var(--color-text);
+  margin-top: 120px;
+  margin-bottom: 120px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.title {
+  font-size: 35px;
+  font-weight: 700;
+  letter-spacing: 1.75px;
+  text-transform: uppercase;
+  text-align: center; /* Center the title */
+  margin-bottom: 40px;
+}
+
+/* NEW: The container that acts as the "window" for the ticker */
+.tickerContainer {
+  width: 100%;
+  overflow: hidden; /* Hides the text that is off-screen */
+  background: #2a0c12 ;
+  padding: 20px 0;
+  border-radius: 10px;
+  /* Adds a fade-out effect on the left and right edges */
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+/* NEW: The list that will scroll horizontally */
+.tickerList {
+  display: flex;
+  width: max-content; /* Prevents wrapping and allows for animation */
+  animation: scroll 20s linear infinite;
+}
+
+/* NEW: Styling for each item in the ticker */
+.tickerList li {
+  font-size: 22px;
+  font-family: var(--font-roboto);
+  padding: 0 40px; /* Adds space between items */
+  white-space: nowrap; /* Ensures each item stays on one line */
+  color: var(--color-text);
+}
+
+.tickerList li::before {
+  content: "✦"; /* Adds a little star separator */
+  margin-right: 40px;
+  color: var(--color-primary);
+}
+
+/* NEW: The keyframe animation that moves the list */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
   }
-  
-  .title {
-    font-size: 35px;
-    font-weight: 700;
-    letter-spacing: 1.75px;
-    text-transform: uppercase;
+  to {
+    /* Moves the list by half its width, creating a perfect loop */
+    transform: translateX(-50%);
   }
-  
-  .list {
-    margin-top: 20px;
-    list-style-type: disc;
-    font-size: 22px;
-    font-family: var(--font-roboto);
-    margin-left: 20px;
-  }
-  
-  .list li {
-    margin-bottom: 10px;
-  }
-  
+}

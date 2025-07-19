@@ -1,78 +1,93 @@
+@import "../../vars.css";
+
 .container {
-    color: var(--color-text);
-    margin-top: 79px;
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-  
-  .title {
-    font-size: 35px;
-    font-weight: 700;
-    letter-spacing: 1.75px;
-    text-transform: uppercase;
-  }
-  
-  .rows {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    margin-top: 20px;
-  }
-  
+  color: var(--color-text);
+  margin-top: 79px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 120px;
+}
+
+.title {
+  font-size: 35px;
+  font-weight: 700;
+  letter-spacing: 1.75px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  background: linear-gradient(90deg, #2a0c12 0%, rgba(25, 55, 109, 0) 100%);
+  border-radius: 12px;
+  padding: 30px; /* Restored original padding */
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+}
+
+/* The .hovered class is now used to apply all hover styles */
+.row.hovered {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(90deg, #2a5a9c 0%, rgba(42, 90, 156, 0.2) 100%);
+}
+
+.row img {
+  flex-shrink: 0;
+}
+
+.row img:first-child {
+  transition: transform 0.3s ease;
+}
+
+.row.hovered img:first-child {
+  transform: scale(1.2) rotate(-10deg);
+}
+
+.details {
+  flex: 1;
+}
+
+.details h3 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.details p {
+  font-size: 22px;
+}
+
+.extraImage {
+  width: 200px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.row.hovered .extraImage {
+  transform: scale(1.15) rotate(5deg);
+}
+
+@media screen and (max-width: 830px) {
   .row {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    background: #19376d;
-    background: linear-gradient(90deg, #19376d 0%, rgba(25, 55, 109, 0) 100%);
-    border-radius: 12px;
-    padding: 30px;
-    text-decoration: none; /* removes underline if row is a link */
-    color: inherit; /* inherit container text color */
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  .row:hover {
-    cursor: pointer;
-    opacity: 0.95;
-  }
-  
-  .row img {
-    flex-shrink: 0; /* prevents images from shrinking */
-  }
-  
-  .details {
-    flex: 1; /* allows details to grow naturally */
-  }
-  
-  .details h3 {
-    font-size: 28px;
-    font-weight: 600;
-  }
-  
-  .details p {
-    font-size: 22px;
-  }
-  
+
   .extraImage {
-    width: 200px; /* larger preview */
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    transition: transform 0.2s ease;
+    width: 100%;
   }
-  
-  .extraImage:hover {
-    transform: scale(1.05);
-    cursor: pointer;
-  }
-  @media screen and (max-width: 768px) {
-    .row {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .extraImage {
-      width: 100%;
-    }
-  }
-    
+}

@@ -8,9 +8,19 @@ import { Projects } from "./components/Projects/Projects";
 import { LatestAccomplishments } from "./components/LatestAccomplishments/LatestAccomplishments";
 import { AcademicUpdates } from "./components/AcademicUpdates/AcademicUpdates";
 
+import React, { useCallback } from "react";
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
+import particleConfig from "./components/Hero/particles-config.js"; // adjust the path if needed
+
 function App() {
+  const particlesInit = useCallback(async (engine) => {
+    await loadFull(engine);
+  }, []);
+
   return (
     <div className={styles.App}>
+      <Particles id="tsparticles" init={particlesInit} options={particleConfig} className={styles.particles} />
       <Navbar />
       <Hero />
       <About />

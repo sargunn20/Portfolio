@@ -7,7 +7,8 @@
     "experiences": [
       "Designed and implemented a mobile-based analytics dashboard for farmers and scientists, enabling real-time visualization, data querying, and statistical analysis."
     ],
-    "imageSrc": "iitropar.png"
+    "imageSrc": "iitropar.png",
+    "technologies": ["MongoDB", "Flask", "Google Earth Engine", "Python"]
   },
   {
     "role": "Web Development Intern",
@@ -18,7 +19,8 @@
       "Developed interactive and responsive e-commerce web interfaces using the MERN stack.",
       "Deployed AI-powered personalized content recommendations to enhance user experience and retention."
     ],
-    "imageSrc": "deftsoft.png"
+    "imageSrc": "deftsoft.png",
+    "technologies": ["Figma", "HTML", "CSS", "React", "Node.js", "MongoDB"]
   },
   {
     "role": "Research Intern",
@@ -28,6 +30,7 @@
     "experiences": [
       "Engineered an ETL data pipeline to process two years of LoRa WAN sensor data, reducing preprocessing time by 40% and enabling scalable AI-driven soil modeling with MongoDB."
     ],
-    "imageSrc": "tiet.png"
+    "imageSrc": "tiet.png",
+    "technologies": ["MongoDB", "Flask", "Google Earth Engine", "Python"]
   }
 ]

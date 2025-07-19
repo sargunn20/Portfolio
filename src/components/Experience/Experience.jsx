@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Experience.module.css";
 import skills from "../../data/skills.json";
 import history from "../../data/history.json";
 
 export const Experience = () => {
+  // RE-ADDED: State to manage the skill highlighting feature
+  const [highlightedSkills, setHighlightedSkills] = useState([]);
+
   const handleSkillClick = (url) => {
     window.open(url, "_blank", "noopener,noreferrer");
   };
@@ -12,13 +15,16 @@ export const Experience = () => {
     <section className={styles.container} id="experience">
       <h2 className={styles.title}>Experience</h2>
       <div className={styles.content}>
-        <div className={styles.skills}>
+        {/* The skills container now checks for highlighted skills to dim others */}
+        <div className={`${styles.skills} ${highlightedSkills.length > 0 ? styles.dimmed : ""}`}>
           {skills.map((skill, id) => (
             <div
               key={id}
-              className={styles.skill}
+              // The individual skill checks if it should be highlighted
+              className={`${styles.skill} ${
+                highlightedSkills.includes(skill.title) ? styles.highlighted : ""
+              }`}
               onClick={() => handleSkillClick(skill.wikiUrl)}
-              style={{ cursor: "pointer" }}
             >
               <div className={styles.skillImageContainer}>
                 <img
@@ -33,7 +39,13 @@ export const Experience = () => {
 
         <ul className={styles.history}>
           {history.map((historyItem, id) => (
-            <li key={id} className={styles.historyItem}>
+            <li
+              key={id}
+              className={styles.historyItem}
+              // RE-ADDED: Event handlers to trigger skill highlighting
+              onMouseEnter={() => setHighlightedSkills(historyItem.technologies)}
+              onMouseLeave={() => setHighlightedSkills([])}
+            >
               <img
                 src={`/assets/history/${historyItem.imageSrc}`}
                 alt={`${historyItem.organisation} Logo`}

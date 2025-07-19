@@ -1,14 +1,33 @@
 @import "../../vars.css";
 
+/* ... (heroWrapper, container, particles, content, etc. styles remain the same) ... */
+.heroWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 0 60px 0;
+}
+
 .container {
   position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 49px;
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 5% 10%;
+}
+
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 1;
-  margin-left: 10%;
-  margin-right: 10%;
 }
 
 .content {
@@ -16,7 +35,7 @@
   flex-direction: column;
   align-items: flex-start;
   color: var(--color-text);
-  z-index: 1;
+  flex: 2.8; 
 }
 
 .title {
@@ -24,19 +43,32 @@
   font-weight: 900;
   margin-bottom: 33px;
   font-family: var(--font-roboto);
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 1) 70%,
-    rgba(255, 255, 255, 0) 120%
-  );
+  background: white;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
+  transition: transform 0.3s ease;
+}
+
+.title:hover {
+  transform: scale(1.02);
 }
 
 .description {
   font-size: 30px;
   font-family: var(--font-roboto);
   margin-bottom: 52px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.description:hover {
+  transform: translateY(-3px);
+  color: #e2e2e2;
+}
+
+.actionContainer {
+  display: flex;
+  align-items: center;
+  gap: 25px;
 }
 
 .contactBtn {
@@ -47,18 +79,67 @@
   font-size: 30px;
   font-weight: 600;
   padding: 17px 26px;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.contactBtn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.socialIcons {
+  display: flex;
+  gap: 15px;
+}
+
+.icon {
+  color: var(--color-text);
+  font-size: 45px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+/* CHANGE: Add position: relative to the image container */
+.heroImgContainer {
+  z-index: 1;
+  flex: 2;
+  transition: transform 0.3s ease;
+  position: relative; /* This is crucial for positioning the SVG */
+}
+
+.heroImgContainer:hover {
+  transform: scale(1.05);
 }
 
 .heroImg {
-  width: 50%;
-  z-index: 1;
-
+  width: 100%;
   animation-name: floating;
   animation-duration: 3s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
 }
+
+/* NEW: Styles for the SVG container */
+.progressRing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%; /* Slightly larger than the image */
+  height: 100%;
+  transform: translate(-50%, -50%) rotate(-90deg); /* Center and rotate to start at the top */
+  z-index: -1; /* Place it behind the image */
+}
+
+/* NEW: Styles for the animating circle */
+.progressRingIndicator {
+  stroke: white;
+  stroke-width: 1; /* Adjust for thickness */
+  fill: transparent;
+}
+
 
 @keyframes floating {
   0% {
@@ -72,40 +153,12 @@
   }
 }
 
-.topBlur {
-  position: absolute;
-  width: 50vw;
-  height: 50vw;
-  min-width: 350px;
-  min-width: 350px;
-  top: -128px;
-  left: -10vw;
-  border-radius: 764px;
-  background: rgba(25, 55, 109, 0.7);
-  filter: blur(100px);
-  z-index: 0;
-}
-
-.bottomBlur {
-  position: absolute;
-  width: 70vw;
-  height: 50vw;
-  min-width: 350px;
-  min-width: 250px;
-  top: 246px;
-  right: -25vw;
-  border-radius: 764px;
-  background: rgba(25, 55, 109, 0.7);
-  filter: blur(100px);
-  z-index: 0;
-}
-
 @media screen and (max-width: 830px) {
   .container {
     flex-direction: column-reverse;
+    margin: 0 5%;
   }
-
-  .content {
-    align-items: center;
+  .actionContainer {
+    justify-content: center;
   }
 }
