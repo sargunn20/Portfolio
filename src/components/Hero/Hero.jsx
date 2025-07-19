@@ -53,10 +53,10 @@ export const Hero = () => {
               Contact Me
             </a>
             <div className={styles.socialIcons}>
-              <a href="#">
+              <a href="#https://www.linkedin.com/in/sargun-3b13b6298/">
                 <FaLinkedin className={styles.icon} />
               </a>
-              <a href="#">
+              <a href="#https://github.com/sargunn20">
                 <FaGithub className={styles.icon} />
               </a>
             </div>

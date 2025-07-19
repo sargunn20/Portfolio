@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
-// ADD: Import tools from Framer Motion
 import { motion, useScroll, useSpring } from "framer-motion";
 
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // ADD: Framer Motion hook to track scroll progress
   const { scrollYProgress } = useScroll();
   
-  // ADD: useSpring for a smoother animation
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -31,7 +28,6 @@ export const Navbar = () => {
 
   return (
     <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
-      {/* ADD: The motion.div element that will be our progress bar */}
       <motion.div className={styles.progressBar} style={{ scaleX }} />
       <a className={styles.title} href="/">
         Portfolio
@@ -60,6 +56,7 @@ export const Navbar = () => {
           <li>
             <a href="#projects">Projects</a>
           </li>
+          {/* ADDED: Accomplishments link from your screenshot */}
           <li>
             <a href="#accomplishments">Accomplishments</a>
           </li>

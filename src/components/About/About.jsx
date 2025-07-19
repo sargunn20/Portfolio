@@ -14,7 +14,7 @@ export const About = () => {
               alt="Cursor icon"
             />
             <div className={styles.aboutItemText}>
-              <h3>Frontend Developer</h3>
+              <h3>Fullstack Developer</h3>
               <p>
                 I build intuitive and responsive web interfaces using modern
                 frameworks, ensuring seamless user experience and performance.
@@ -27,7 +27,7 @@ export const About = () => {
               alt="Server icon"
             />
             <div className={styles.aboutItemText}>
-              <h3>Backend Developer</h3>
+              <h3>ETL & API Developer</h3>
               <p>
                 I design scalable back-end systems, ETL pipelines, and APIs,
                 integrating IoT data and AI-driven analytics for real-world applications.
