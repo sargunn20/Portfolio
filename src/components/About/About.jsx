@@ -14,7 +14,7 @@ export const About = () => {
               alt="Cursor icon"
             />
             <div className={styles.aboutItemText}>
-              <h3>Fullstack Developer</h3>
+              <h3>Full-stack Developer</h3>
               <p>
                 I build intuitive and responsive web interfaces using modern
                 frameworks, ensuring seamless user experience and performance.
