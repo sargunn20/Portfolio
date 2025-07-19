@@ -53,13 +53,23 @@ export const Hero = () => {
               Contact Me
             </a>
             <div className={styles.socialIcons}>
-              <a href="#https://www.linkedin.com/in/sargun-3b13b6298/">
-                <FaLinkedin className={styles.icon} />
-              </a>
-              <a href="#https://github.com/sargunn20">
-                <FaGithub className={styles.icon} />
-              </a>
-            </div>
+  {/* CORRECTED: Removed the "#" from the href and added target="_blank" */}
+  <a
+    href="https://www.linkedin.com/in/sargun-3b13b6298/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <FaLinkedin className={styles.icon} />
+  </a>
+  {/* CORRECTED: Removed the "#" from the href and added target="_blank" */}
+  <a
+    href="https://github.com/sargunn20"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <FaGithub className={styles.icon} />
+  </a>
+</div>
           </div>
         </div>
 
