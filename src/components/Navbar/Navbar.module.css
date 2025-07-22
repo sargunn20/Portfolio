@@ -24,7 +24,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: var(--color-primary);
+  background: white;
   transform-origin: 0%;
 }
 

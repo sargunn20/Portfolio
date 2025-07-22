@@ -1,19 +1,17 @@
-@import "../../vars.css";
+ @import "../../vars.css"; 
 
 .container {
-  color: var(--color-text);
-  margin-top: 79px;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-bottom: 120px;
+
+  color: #fff; 
+  margin: 80px 10% 120px;
 }
 
 .title {
-  font-size: 32px;
+  font-size: 35px;
   font-weight: 700;
   letter-spacing: 1.75px;
   text-transform: uppercase;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
   text-align: center;
 }
 
@@ -21,39 +19,69 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-  margin-top: 20px;
 }
 
+/* --- The Magic: 3D Tilt Card --- */
 .row {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  position: relative;
   display: flex;
   align-items: center;
   gap: 30px;
-  background: linear-gradient(90deg, #2a0c12 0%, rgba(25, 55, 109, 0) 100%);
-  border-radius: 12px;
-  padding: 30px; /* Restored original padding */
-  text-decoration: none;
+  padding: 30px;
+  border-radius: 15px;
+  background: var(--color-secondary);
   color: inherit;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-  cursor: pointer;
+  text-decoration: none;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.4s ease-out;
+
+  /* Staggered entrance animation */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUpFadeIn 0.6s ease-out forwards;
 }
 
-/* The .hovered class is now used to apply all hover styles */
-.row.hovered {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
-  background: linear-gradient(90deg, #2a5a9c 0%, rgba(42, 90, 156, 0.2) 100%);
+.row:hover {
+  transform: perspective(1000px) rotateY(calc((var(--mouse-x) - 50%) * -0.05deg)) rotateX(calc((var(--mouse-y) - 50%) * 0.1deg)) scale3d(1.03, 1.03, 1.03);
 }
 
-.row img {
+/* --- Interactive Glow Effect --- */
+.glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 76, 76, 0.2),
+    transparent 40%
+  );
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.row:hover .glow {
+  opacity: 1;
+}
+
+/* Positioning content above the glow */
+.row > * {
+  z-index: 2;
+}
+
+
+/* --- Card Content Styling --- */
+.icon {
+  width: 60px;
+  height: 60px;
   flex-shrink: 0;
-}
-
-.row img:first-child {
-  transition: transform 0.3s ease;
-}
-
-.row.hovered img:first-child {
-  transform: scale(1.2) rotate(-10deg);
 }
 
 .details {
@@ -67,28 +95,121 @@
 }
 
 .details p {
-  font-size: 22px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #c5c5c5;
 }
 
 .extraImage {
-  width: 200px;
-  height: auto;
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
   transition: transform 0.3s ease;
 }
 
-.row.hovered .extraImage {
-  transform: scale(1.15) rotate(5deg);
+.row:hover .extraImage {
+  transform: scale(1.1);
 }
 
+.clickableImage {
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+
+/* --- Enhanced Modal --- */
+.modalBackdrop {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.modalContent {
+  position: relative;
+  background: #1e1e1e;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 80vw;
+  max-height: 90vh;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: zoomIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.modalImage {
+  display: block;
+  max-width: 100%;
+  max-height: calc(90vh - 100px); /* Adjust for padding and caption */
+  border-radius: 5px;
+}
+
+.modalCaption {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #eee;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.closeButton:hover {
+  transform: scale(1.2);
+  color: #ff4d4d;
+}
+
+
+/* --- Animations --- */
+@keyframes slideUpFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* --- Responsive Design --- */
 @media screen and (max-width: 830px) {
   .row {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
   }
-
   .extraImage {
-    width: 100%;
+    width: 80%;
+    height: auto;
+    margin-top: 20px;
+  }
+  .modalContent {
+    max-width: 95vw;
   }
 }
